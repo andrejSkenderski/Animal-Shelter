@@ -1,0 +1,115 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Dodadi klient</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Animal shelter</h1>
+    </div>
+</section>
+
+
+<div xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <section class="jumbotron text-center">
+        <div class="container">
+
+        </div>
+    </section>
+
+
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-12" th:if="${klienti}">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">EMBG</th>
+                            <th scope="col">Ime</th>
+                            <th scope="col">Prezime</th>
+                            <th scope="col">Adresa</th>
+                            <th scope="col">ID opstina</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="klient : ${klienti}">
+                            <td th:text="${klient.getEmbg()}"></td>
+                            <td th:text="${klient.getIme()}"></td>
+                            <td th:text="${klient.getPrezime()}"></td>
+                            <td th:text="${klient.getAdresa_ziveenje()}"></td>
+                            <!--                            <td th:text="${klient.getOpstina().getIme()}"></td>-->
+                            <td th:text="${klient.getId_opstina() != null}
+                            ? ${klient.getId_opstina()} : 'Nema opstina'"></td>
+
+                            <td class="text-right">
+                                <form th:action="@{'/home/delete/{embg}' (id=${klient.getEmbg()})}"
+                                      th:method="DELETE">
+                                    <button type="submit" class="btn btn-sm btn-danger"><i
+                                            class="fa fa-trash">Delete</i></button>
+                                </form>
+
+                                <a th:href="@{'/home/edit-form/{embg}' (id=${klient.getEmbg()})}"
+                                   class="btn btn-sm btn-info"><i class="fa fa-trash">Edit</i></a>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col mb-3">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <a href="/home/add-form" class="btn btn-block btn-dark">Dodadi klient</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+<!--<div xmlns:th="http://www.thymeleaf.org">-->
+<!--    <section class="jumbotron text-center">-->
+<!--        <div class="container">-->
+<!--            <h1 class="jumbotron-heading">ANIMAL SHELTER</h1>-->
+<!--        </div>-->
+<!--    </section>-->
+
+
+<!--    <div class="col mb-3">-->
+<!--        <div class="row">-->
+<!--            <div class="col-sm-12 col-md-12" >-->
+<!--                <a href="/home/add-form" class="btn btn-block btn-dark">Dodadi klient</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div class="col mb-3">-->
+<!--        <div class="row">-->
+<!--            <div class="col-sm-12 col-md-12" >-->
+<!--                <a href="/home/add-form" class="btn btn-block btn-dark">Dodadi mileniche</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
