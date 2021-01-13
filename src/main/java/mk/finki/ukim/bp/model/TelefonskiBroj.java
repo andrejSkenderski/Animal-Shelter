@@ -8,14 +8,15 @@ import java.io.Serializable;
 
 @Data
 @Entity
-@IdClass (telefonski_brojId.class)
-public class telefonski_broj implements Serializable {
+@IdClass (TelefonskiBrojId.class)
+@Table (name = "telefonski_broj")
+public class TelefonskiBroj implements Serializable {
 
     @Id
     private String telefonski_broj;
     @Id
     private String embg;
 
-    public telefonski_broj() {
+    public TelefonskiBroj() {
     }
 }

@@ -1,9 +1,9 @@
 package mk.finki.ukim.bp.web.controller;
 
 
-import mk.finki.ukim.bp.model.klient;
-import mk.finki.ukim.bp.model.mileniche;
-import mk.finki.ukim.bp.model.opstina;
+import mk.finki.ukim.bp.model.Klient;
+import mk.finki.ukim.bp.model.Mileniche;
+import mk.finki.ukim.bp.model.Opstina;
 import mk.finki.ukim.bp.service.KlientService;
 import mk.finki.ukim.bp.service.MilenicheService;
 import mk.finki.ukim.bp.service.OpstinaService;
@@ -32,10 +32,10 @@ public class AnimalShelterController {
             model.addAttribute("hasError", true);
             model.addAttribute("error", error);
         }
-        List<mileniche> milenichinja = this.milenicheService.listAll();
+        List<Mileniche> milenichinja = this.milenicheService.listAll();
         model.addAttribute("milenichinja", milenichinja);
 
-        List<klient> klienti = this.klientService.listAll();
+        List<Klient> klienti = this.klientService.listAll();
         model.addAttribute("klienti", klienti);
 
         model.addAttribute("bodyContent", "home");
@@ -46,15 +46,15 @@ public class AnimalShelterController {
 
     @DeleteMapping("/delete/{id}")
     public String deleteKlient(@PathVariable String id) {
-        this.klientService.deleteByEmbg(id);
+        this.klientService.deleteById(id);
         return "redirect:/home";
     }
 
 
     @GetMapping("/add-form")
     public String addKlientPage(Model model) {
-        List<klient> klienti = this.klientService.listAll();
-        List<opstina> opstini = this.opstinaService.listAll();
+        List<Klient> klienti = this.klientService.listAll();
+        List<Opstina> opstini = this.opstinaService.listAll();
         model.addAttribute("klienti", klienti);
         model.addAttribute("opstini", opstini);
 
@@ -64,8 +64,8 @@ public class AnimalShelterController {
     @GetMapping("/edit-form/{id}")
     public String getEditKlientPage(@PathVariable String id, Model model) {
         if (this.klientService.findByEmbg(id).isPresent()) {
-            klient klient = this.klientService.findByEmbg(id).get();
-            List<opstina> opstini = this.opstinaService.listAll();
+            Klient klient = this.klientService.findByEmbg(id).get();
+            List<Opstina> opstini = this.opstinaService.listAll();
             model.addAttribute("klient", klient);
             model.addAttribute("opstini", opstini);
             return "add-klient";
@@ -81,11 +81,52 @@ public class AnimalShelterController {
             @RequestParam String adresa,
             @RequestParam Integer opstina) {
 
-            this.klientService.addKlient(embg,ime,prezime,adresa,opstina);
+        this.klientService.addKlient(embg, ime, prezime, adresa, opstina);
 
 
         return "redirect:/home";
     }
+
+    @GetMapping("/list-pets/{id}")
+    public String listMilenichinja(@PathVariable String id, Model model) {
+        if (this.klientService.findByEmbg(id).isPresent()) {
+            Klient klient = this.klientService.findByEmbg(id).get();
+            List<Mileniche> milenichinja = this.milenicheService.listAll();
+            model.addAttribute("klient", klient);
+            model.addAttribute("milenichinja", milenichinja);
+            return "list-pets";
+        }
+
+        return "redirect:/home?error=KlientNotFound";
+
+    }
+
+    @GetMapping("/vdomi-mileniche/{embg}/{id}")
+    public String vdomiMileniche(@PathVariable String embg, @PathVariable Integer id, Model model) {
+        if (this.klientService.findByEmbg(embg).isPresent()) {
+            if (this.milenicheService.findById(id).isPresent()) {
+                Mileniche mileniche = this.milenicheService.findById(id).get();
+                model.addAttribute("mileniche", mileniche);
+                this.milenicheService.updateVdomenoMileniche(id, embg);
+                return "redirect:/home";
+            }
+            return "redirect:/home?error=MilenicheNotFound";
+        }
+        return "redirect:/home?error=KlientNotFound";
+    }
+    
+
+//    @GetMapping("/pregledaj-mileniche/{id}")
+//    public String pregledajMileniche (@PathVariable Integer id, Model model){
+//        if (this.milenicheService.findById(id).isPresent()){
+//            Mileniche mileniche = this.milenicheService.findById(id).get();
+//            model.addAttribute("mileniche", mileniche);
+//            return "pregledaj-mileniche";
+//        }
+//        return "redirect:/home?error=MilenicheNotFound";
+//    }
+
+
 
 
 }

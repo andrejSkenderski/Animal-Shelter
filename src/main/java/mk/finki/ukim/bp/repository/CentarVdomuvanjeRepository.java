@@ -1,15 +1,15 @@
 package mk.finki.ukim.bp.repository;
 
-import mk.finki.ukim.bp.model.centar_vdomuvanje;
+import mk.finki.ukim.bp.model.CentarVdomuvanje;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface CentarVdomuvanjeRepository extends JpaRepository<centar_vdomuvanje, Integer> {
+public interface CentarVdomuvanjeRepository extends JpaRepository<CentarVdomuvanje, Integer> {
 
-    Optional<centar_vdomuvanje> findById(int id_centar_vdomuvanje);
+    Optional<CentarVdomuvanje> findById(int id_centar_vdomuvanje);
 
 
 }

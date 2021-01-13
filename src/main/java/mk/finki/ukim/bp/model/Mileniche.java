@@ -9,7 +9,8 @@ import java.sql.Date;
 
 @Data
 @Entity
-public class mileniche {
+@Table (name = "mileniche")
+public class Mileniche {
     @Id
     private Integer id_mileniche;
     private String ime;
@@ -28,7 +29,7 @@ public class mileniche {
     private Date datum_vdomuvanje;
     private String embg_klient;
 
-    public mileniche(int id_mileniche, String ime, String vid, String rasa, String pol, String boja, int id_centar_vdomuvanje,
+    public Mileniche(int id_mileniche, String ime, String vid, String rasa, String pol, String boja, int id_centar_vdomuvanje,
                      Date datum_smestuvanje, int id_opstina, Date datum_naogjanje, String opis_lokacija) {
 
         this.id_mileniche = id_mileniche;
@@ -49,6 +50,6 @@ public class mileniche {
         this.embg_klient = null;
     }
 
-    public mileniche() {
+    public Mileniche() {
     }
 }

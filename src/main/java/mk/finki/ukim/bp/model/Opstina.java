@@ -7,7 +7,8 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public class opstina {
+@Table (name = "opstina")
+public class Opstina {
 
     @Id
     private Integer id_opstina;
@@ -15,7 +16,7 @@ public class opstina {
     private String ime;
 
 
-    public opstina() {
+    public Opstina() {
     }
 
 }

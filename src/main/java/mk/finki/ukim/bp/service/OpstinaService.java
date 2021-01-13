@@ -1,14 +1,14 @@
 package mk.finki.ukim.bp.service;
 
-import mk.finki.ukim.bp.model.opstina;
+import mk.finki.ukim.bp.model.Opstina;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface OpstinaService {
-    List<opstina> listAll();
+    List<Opstina> listAll();
 
-    Optional<opstina> findById(int id_opstina);
+    Optional<Opstina> findById(int id_opstina);
 
 
 }

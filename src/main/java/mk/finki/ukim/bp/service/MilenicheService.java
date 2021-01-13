@@ -1,17 +1,17 @@
 package mk.finki.ukim.bp.service;
 
-import mk.finki.ukim.bp.model.mileniche;
+import mk.finki.ukim.bp.model.Mileniche;
 
 import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
 public interface MilenicheService {
-    List<mileniche> listAll();
+    List<Mileniche> listAll();
 
-    Optional<mileniche> findById(int id_mileniche);
+    Optional<Mileniche> findById(int id_mileniche);
 
-    Optional<mileniche> addMileniche(int id_mileniche,
+    Optional<Mileniche> addMileniche(int id_mileniche,
                                      String ime,
                                      String vid,
                                      String rasa,
@@ -22,4 +22,8 @@ public interface MilenicheService {
                                      int id_opstina,
                                      Date datum_naogjanje,
                                      String opis_lokacija);
+
+    Optional<Mileniche> updateVdomenoMileniche (Integer id_mileniche,  String embg_klient);
+
+    Optional<Mileniche> updatePregledanoMileniche (Integer id_mileniche, Integer id_veterinaren_centar, String zdravstvena_sostojba);
 }

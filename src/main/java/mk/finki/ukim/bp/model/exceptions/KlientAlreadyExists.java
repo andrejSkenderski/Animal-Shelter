@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class KlientAlreadyExists extends RuntimeException{
 
     public KlientAlreadyExists(String embg) {
-        super(String.format("Client with embg: %d already exists.", embg));
+        super(String.format("Client with embg: %s already exists.", embg));
     }
 }

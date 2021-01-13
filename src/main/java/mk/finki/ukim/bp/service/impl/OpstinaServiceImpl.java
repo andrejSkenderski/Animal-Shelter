@@ -1,6 +1,6 @@
 package mk.finki.ukim.bp.service.impl;
 
-import mk.finki.ukim.bp.model.opstina;
+import mk.finki.ukim.bp.model.Opstina;
 import mk.finki.ukim.bp.repository.OpstinaRepository;
 import mk.finki.ukim.bp.service.OpstinaService;
 import org.springframework.stereotype.Service;
@@ -17,12 +17,12 @@ public class OpstinaServiceImpl implements OpstinaService {
     }
 
     @Override
-    public List<opstina> listAll() {
+    public List<Opstina> listAll() {
         return this.opstinaRepository.findAll();
     }
 
     @Override
-    public Optional<opstina> findById(int id_opstina) {
+    public Optional<Opstina> findById(int id_opstina) {
         return this.opstinaRepository.findById(id_opstina);
     }
 }

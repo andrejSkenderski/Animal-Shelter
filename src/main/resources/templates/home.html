@@ -24,12 +24,6 @@
 </section>
 
 
-<div xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
-    <section class="jumbotron text-center">
-        <div class="container">
-
-        </div>
-    </section>
 
 
     <div class="container mb-4">
@@ -58,14 +52,18 @@
                             ? ${klient.getId_opstina()} : 'Nema opstina'"></td>
 
                             <td class="text-right">
-                                <form th:action="@{'/home/delete/{embg}' (id=${klient.getEmbg()})}"
+                                <form th:action="@{'/home/delete/{id}' (id=${klient.getEmbg()})}"
                                       th:method="DELETE">
                                     <button type="submit" class="btn btn-sm btn-danger"><i
                                             class="fa fa-trash">Delete</i></button>
                                 </form>
 
-                                <a th:href="@{'/home/edit-form/{embg}' (id=${klient.getEmbg()})}"
+                                <a th:href="@{'/home/edit-form/{id}' (id=${klient.getEmbg()})}"
                                    class="btn btn-sm btn-info"><i class="fa fa-trash">Edit</i></a>
+                                    <br>
+                                    <br>
+                                <a th:href="@{'/home/list-pets/{id}' (id=${klient.getEmbg()})}"
+                                   class="btn btn-sm btn-info"><i class="fa fa-trash">Select pet</i></a>
 
                             </td>
                         </tr>
@@ -78,6 +76,12 @@
                     <div class="col-sm-12 col-md-12">
                         <a href="/home/add-form" class="btn btn-block btn-dark">Dodadi klient</a>
                     </div>
+                    <br>
+                    <br>
+
+                    <div class="col-sm-12 col-md-12">
+                        <a href="/home/" class="btn btn-block btn-dark">Dodadi mileniche</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -87,29 +91,5 @@
 </body>
 </html>
 
-<!--<div xmlns:th="http://www.thymeleaf.org">-->
-<!--    <section class="jumbotron text-center">-->
-<!--        <div class="container">-->
-<!--            <h1 class="jumbotron-heading">ANIMAL SHELTER</h1>-->
-<!--        </div>-->
-<!--    </section>-->
-
-
-<!--    <div class="col mb-3">-->
-<!--        <div class="row">-->
-<!--            <div class="col-sm-12 col-md-12" >-->
-<!--                <a href="/home/add-form" class="btn btn-block btn-dark">Dodadi klient</a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--    <div class="col mb-3">-->
-<!--        <div class="row">-->
-<!--            <div class="col-sm-12 col-md-12" >-->
-<!--                <a href="/home/add-form" class="btn btn-block btn-dark">Dodadi mileniche</a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 
 

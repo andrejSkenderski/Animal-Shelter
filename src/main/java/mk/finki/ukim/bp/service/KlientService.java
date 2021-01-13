@@ -1,14 +1,13 @@
 package mk.finki.ukim.bp.service;
 
-import mk.finki.ukim.bp.model.klient;
-import mk.finki.ukim.bp.model.opstina;
+import mk.finki.ukim.bp.model.Klient;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface KlientService {
-    List<klient> listAll();
-    Optional<klient> findByEmbg(String embg);
-    Optional<klient> addKlient (String embg, String ime, String prezime, String adresa, Integer opstina);
-    void deleteByEmbg (String embg);
+    List<Klient> listAll();
+    Optional<Klient> findByEmbg(String embg);
+    Optional<Klient> addKlient (String embg, String ime, String prezime, String adresa, Integer opstina);
+    void deleteById (String embg);
 }

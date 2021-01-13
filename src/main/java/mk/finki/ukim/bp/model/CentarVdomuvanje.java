@@ -6,7 +6,8 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public class centar_vdomuvanje {
+@Table (name = "centar_vdomuvanje")
+public class CentarVdomuvanje {
     @Id
     private int id_centar_vdomuvanje;
 
@@ -18,7 +19,7 @@ public class centar_vdomuvanje {
 //    @ManyToOne
 //    private opstina opstina;
 
-    public centar_vdomuvanje() {
+    public CentarVdomuvanje() {
     }
 
 }

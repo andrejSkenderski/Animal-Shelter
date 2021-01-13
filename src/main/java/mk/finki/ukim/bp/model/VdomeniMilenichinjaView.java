@@ -4,10 +4,12 @@ package mk.finki.ukim.bp.model;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.sql.Date;
 
 @Data
-public class vdomeni_milenichinja {
+@Table(name = "vdomeni_milenichinja")
+public class VdomeniMilenichinjaView {
     private String klient_ime;
     private String klient_prezime;
     private String klient_adresa;

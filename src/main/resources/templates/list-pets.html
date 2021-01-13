@@ -1,0 +1,106 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Dodadi klient</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Animal shelter</h1>
+    </div>
+</section>
+
+
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-12" th:if="${milenichinja}">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Ime</th>
+                        <th scope="col">Vid</th>
+                        <th scope="col">Rasa</th>
+                        <th scope="col">Pol</th>
+                        <th scope="col">Boja</th>
+                        <th scope="col">ID centar</th>
+                        <th scope="col">Datum na smestuvanje</th>
+                        <th scope="col">ID opstina</th>
+                        <th scope="col">Datum na naogjanje</th>
+                        <th scope="col">Opis na lokacija</th>
+                        <th scope="col">ID veterinaren centar</th>
+                        <th scope="col">Datum na pregled</th>
+                        <th scope="col">Zdravstvena sostojba</th>
+                        <th scope="col">Datum vdomuvanje</th>
+                        <th scope="col">EMBG na vdomuvac</th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="m : ${milenichinja}">
+                        <td th:text="${m.getIme()}"></td>
+                        <td th:text="${m.getVid()}"></td>
+                        <td th:text="${m.getRasa()}"></td>
+                        <td th:text="${m.getPol()}"></td>
+                        <td th:text="${m.getBoja()}"></td>
+                        <td th:text="${m.getId_centar_vdomuvanje()}"></td>
+                        <td th:text="${m.getDatum_smestuvanje()}"></td>
+                        <td th:text="${m.getId_opstina()}"></td>
+                        <td th:text="${m.getDatum_naogjanje()}"></td>
+                        <td th:text="${m.getOpis_lokacija()}"></td>
+                        <td th:text="${m.getId_veterinaren_centar()}"></td>
+                        <td th:text="${m.getDatum_pregled()}"></td>
+                        <td th:text="${m.getZdravstvena_sostojba()}"></td>
+                        <td th:text="${m.getDatum_vdomuvanje()}"></td>
+                        <td th:text="${m.getEmbg_klient()}"></td>
+
+
+                        <td class="text-right">
+                            <a th:if="${m.getEmbg_klient()} == null">
+                                <a th:href="@{'/home/vdomi-mileniche/{embg}/{id}' (embg=${klient.getEmbg()}, id = ${m.getId_mileniche()})}">
+                                    <button type="submit" class="btn btn-sm btn-danger"><i
+                                            class="fa fa-trash">Vdomi</i></button>
+                                </a>
+                            </a>
+
+                            <a th:if="${m.getEmbg_klient()} != null">
+                                Vdomeno
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col mb-3">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <a href="/home/add-form" class="btn btn-block btn-dark">Dodadi klient</a>
+                </div>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
+</html>
+
+
+

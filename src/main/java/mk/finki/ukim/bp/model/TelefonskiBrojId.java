@@ -4,15 +4,15 @@ package mk.finki.ukim.bp.model;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class telefonski_brojId implements Serializable {
+public class TelefonskiBrojId implements Serializable {
 
     private String telefonski_broj;
     private String embg;
 
-    public telefonski_brojId() {
+    public TelefonskiBrojId() {
     }
 
-    public telefonski_brojId(String telefonski_broj, String embg) {
+    public TelefonskiBrojId(String telefonski_broj, String embg) {
         this.telefonski_broj = telefonski_broj;
         this.embg = embg;
     }
@@ -21,7 +21,7 @@ public class telefonski_brojId implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        telefonski_brojId that = (telefonski_brojId) o;
+        TelefonskiBrojId that = (TelefonskiBrojId) o;
         return Objects.equals(telefonski_broj, that.telefonski_broj) &&
                 Objects.equals(embg, that.embg);
     }

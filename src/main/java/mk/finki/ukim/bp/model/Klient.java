@@ -7,7 +7,8 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public class klient {
+@Table (name= "klient")
+public class Klient {
     @Id
     private String embg;
     private String ime;
@@ -22,7 +23,7 @@ public class klient {
 
 
 
-    public klient(String embg,String ime, String prezime, String adresa_ziveenje, Integer id_opstina) {
+    public Klient(String embg, String ime, String prezime, String adresa_ziveenje, Integer id_opstina) {
         this.embg = embg;
         this.ime = ime;
         this.prezime = prezime;
@@ -30,6 +31,6 @@ public class klient {
         this.id_opstina = id_opstina;
     }
 
-    public klient() {
+    public Klient() {
     }
 }
